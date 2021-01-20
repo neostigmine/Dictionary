@@ -3,42 +3,6 @@
 	<head>
 		<meta charset='UTF-8'>
 		<title>dictionary</title>
-		<script type='text/javascript' src='jquery.js'></script>
-		<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-		<script>
-			$(document).ready(function() {
-				$("#keyword").keyup(function() {
-					var k = $(this).val();
-					$("#user-table > tbody > tr").hide();
-					var temp = $("#user-table > tbody > tr > td:nth-child(4n+3):contains('" + k + "')");
-
-					$(temp).parent().show();
-					$('.count').text(temp.length);				  
-				})
-			})
-			function addRow() {
-			  // table element 찾기
-				const table = document.getElementById('user-table');
-			  
-			  // 새 행(Row) 추가
-				const newRow = table.insertRow();
-			  
-			  // 새 행(Row)에 Cell 추가
-				const newCell1 = newRow.insertCell(0);
-				const newCell2 = newRow.insertCell(1);
-			  
-			  // Cell에 텍스트 추가
-				newCell1.innerText = '새 행';
-				newCell2.innerText = 'New line';
-			}
-			function deleteRow(rownum) {
-  // table element 찾기
-				const table = document.getElementById('user-table');
-  
-  // 행(Row) 삭제
-				const newRow = table.deleteRow(rownum);
-			}
-		</script>
 	</head>
 	<body>
 		<div id='container'>
@@ -63,11 +27,54 @@
 				</tr>
 			</table>
 			<input type='button' 
-					value='행추가' 
+					value='이아나어 단어' 
 					onclick='addRow()'>
-			<input type='button' 
+			<input type='button'
 					value='행삭제' 
 					onclick='deleteRow(-1)'>
 		</div>
-	</body>
+	<script type='text/javascript' src='jquery.js'></script>
+		<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#keyword").keyup(function() {
+					var k = $(this).val();
+					$("#user-table > tbody > tr").hide();
+					var temp = $("#user-table > tbody > tr > td:nth-child(1n):contains('" + k + "')");
+
+					$(temp).parent().show();
+					$('.count').text(temp.length);				  
+				})
+			})
+		</script>
+		<script>
+			function addRow() {
+			  // table element 찾기
+				const table = document.getElementById('user-table');
+			  
+			  // 새 행(Row) 추가
+				const newRow = table.insertRow();
+			  
+			  // 새 행(Row)에 Cell 추가
+
+				const newCell1 = newRow.insertCell(0);
+				const newCell2 = newRow.insertCell(1);
+				const newCell3 = newRow.insertCell(2);
+				const newCell4 = newRow.insertCell(3);
+			  
+			  // Cell에 텍스트 추가
+				newCell1.innerHTML = '<div contenteditable></div>';
+				newCell2.innerHTML = '<div contenteditable></div>';
+				newCell3.innerHTML = '<div contenteditable></div>';
+				newCell4.innerHTML = '<div contenteditable></div>';
+			}
+			function deleteRow(rownum) {
+  // table element 찾기
+				const table = document.getElementById('user-table');
+  
+  // 행(Row) 삭제
+				const newRow = table.deleteRow(rownum);
+			}
+		</script>
+		</body>
 </html>
